@@ -1,13 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<svg [attr.height]="height" [attr.width]="width" (mousemove)="move($event)">
+<svg [attr.height]="height" [attr.width]="width" (pan)="move($event)">
 
   <circle r="50"
           [attr.cx]="circleX"
           [attr.cy]="circleY"
-          (mousedown)="dragFlag=true"
-          (mouseup)="dragFlag=false"
+          (pan)="hoge($event)"
   ></circle>
   <g *ngFor="let x of xTick">
     <text [attr.x.value]="getXscale(x.value)" [attr.y.value]="height">{{x.value}}</text>
   </g>
 </svg>
+
+
+<input type="text" [value]="test">

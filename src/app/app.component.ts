@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   circleX = 300;
   circleY = 300;
   dragFlag = false;
+  test = 'hogehoge';
 
   constructor() {
   }
@@ -57,10 +58,23 @@ export class AppComponent implements OnInit {
     this.xTick = result;
   }
 
-  move(event: MouseEvent) {
-    if (!this.dragFlag) return;
-    this.circleX = event.clientX;
-    this.circleY = event.clientY;
+  move(event) {
+    if (!this.dragFlag) {
+      return;
+    }
+    console.dir(event);
+    this.circleX = event.center.x;
+    this.circleY = event.center.y;
+  }
+
+  hoge(event) {
+    // console.dir(event);
+    if (event.eventType === 4) {
+      this.dragFlag = false;
+    } else {
+      this.dragFlag = true;
+    }
+    this.test = this.test === 'hogehoge' ? 'fugafuga' : 'hogehoge';
   }
 }
 
